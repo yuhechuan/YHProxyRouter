@@ -24,7 +24,6 @@ May you spend your life in the way you like,this sentence is so beautiful.
 * [环境 Requirements](#环境-requirements)
 * [介绍 Introduction](#介绍-introduction)
 * [使用 Usage](#使用-usage)
-* [小伙伴们 Partners](#小伙伴们-partners)
 * [版本 ChangeLog](#版本-changelog)
 * [提示 Tips](#提示-tips)
 * [鸣谢 Thanks](#鸣谢-thanks)
