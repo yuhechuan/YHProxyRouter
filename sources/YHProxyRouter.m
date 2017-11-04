@@ -128,6 +128,9 @@
         return [self executeMethod:methodName];
     }
     NSAssert(methodName && methodName.length > 0, @"method name can't be blanc");
+    if (![methodName hasSuffix:@":"]) {
+        methodName = [methodName stringByAppendingString:@":"];
+    }
     // 方法签名(方法的描述)
     SEL sel = NSSelectorFromString(methodName);
     id target = [self fitterClass:sel];

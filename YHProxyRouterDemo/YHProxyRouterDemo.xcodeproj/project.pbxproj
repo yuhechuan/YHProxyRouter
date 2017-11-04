@@ -15,6 +15,10 @@
 		180D23A91FADC9F9005E991F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D23A81FADC9F9005E991F /* main.m */; };
 		180D23B31FADC9F9005E991F /* YHProxyRouterDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D23B21FADC9F9005E991F /* YHProxyRouterDemoTests.m */; };
 		180D23BE1FADC9F9005E991F /* YHProxyRouterDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D23BD1FADC9F9005E991F /* YHProxyRouterDemoUITests.m */; };
+		180D23D11FADCAB5005E991F /* NSObject+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D23CD1FADCAB5005E991F /* NSObject+Router.m */; };
+		180D23D21FADCAB5005E991F /* YHProxyRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D23D01FADCAB5005E991F /* YHProxyRouter.m */; };
+		180D23D81FADCAF2005E991F /* YHModelOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D23D51FADCAF2005E991F /* YHModelOne.m */; };
+		180D23D91FADCAF2005E991F /* YHModelTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D23D71FADCAF2005E991F /* YHModelTwo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,15 @@
 		180D23B91FADC9F9005E991F /* YHProxyRouterDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YHProxyRouterDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		180D23BD1FADC9F9005E991F /* YHProxyRouterDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YHProxyRouterDemoUITests.m; sourceTree = "<group>"; };
 		180D23BF1FADC9F9005E991F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		180D23CC1FADCAB5005E991F /* NSObject+Router.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Router.h"; sourceTree = "<group>"; };
+		180D23CD1FADCAB5005E991F /* NSObject+Router.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Router.m"; sourceTree = "<group>"; };
+		180D23CE1FADCAB5005E991F /* YHProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHProxy.h; sourceTree = "<group>"; };
+		180D23CF1FADCAB5005E991F /* YHProxyRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHProxyRouter.h; sourceTree = "<group>"; };
+		180D23D01FADCAB5005E991F /* YHProxyRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHProxyRouter.m; sourceTree = "<group>"; };
+		180D23D41FADCAF2005E991F /* YHModelOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHModelOne.h; sourceTree = "<group>"; };
+		180D23D51FADCAF2005E991F /* YHModelOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHModelOne.m; sourceTree = "<group>"; };
+		180D23D61FADCAF2005E991F /* YHModelTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHModelTwo.h; sourceTree = "<group>"; };
+		180D23D71FADCAF2005E991F /* YHModelTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHModelTwo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +94,7 @@
 		180D238D1FADC9F9005E991F = {
 			isa = PBXGroup;
 			children = (
+				180D23CB1FADCAB5005E991F /* sources */,
 				180D23981FADC9F9005E991F /* YHProxyRouterDemo */,
 				180D23B11FADC9F9005E991F /* YHProxyRouterDemoTests */,
 				180D23BC1FADC9F9005E991F /* YHProxyRouterDemoUITests */,
@@ -101,6 +115,7 @@
 		180D23981FADC9F9005E991F /* YHProxyRouterDemo */ = {
 			isa = PBXGroup;
 			children = (
+				180D23D31FADCAF2005E991F /* models */,
 				180D23991FADC9F9005E991F /* AppDelegate.h */,
 				180D239A1FADC9F9005E991F /* AppDelegate.m */,
 				180D239C1FADC9F9005E991F /* ViewController.h */,
@@ -130,6 +145,29 @@
 				180D23BF1FADC9F9005E991F /* Info.plist */,
 			);
 			path = YHProxyRouterDemoUITests;
+			sourceTree = "<group>";
+		};
+		180D23CB1FADCAB5005E991F /* sources */ = {
+			isa = PBXGroup;
+			children = (
+				180D23CC1FADCAB5005E991F /* NSObject+Router.h */,
+				180D23CD1FADCAB5005E991F /* NSObject+Router.m */,
+				180D23CE1FADCAB5005E991F /* YHProxy.h */,
+				180D23CF1FADCAB5005E991F /* YHProxyRouter.h */,
+				180D23D01FADCAB5005E991F /* YHProxyRouter.m */,
+			);
+			path = sources;
+			sourceTree = "<group>";
+		};
+		180D23D31FADCAF2005E991F /* models */ = {
+			isa = PBXGroup;
+			children = (
+				180D23D41FADCAF2005E991F /* YHModelOne.h */,
+				180D23D51FADCAF2005E991F /* YHModelOne.m */,
+				180D23D61FADCAF2005E991F /* YHModelTwo.h */,
+				180D23D71FADCAF2005E991F /* YHModelTwo.m */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,8 +303,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180D23D11FADCAB5005E991F /* NSObject+Router.m in Sources */,
+				180D23D21FADCAB5005E991F /* YHProxyRouter.m in Sources */,
 				180D239E1FADC9F9005E991F /* ViewController.m in Sources */,
+				180D23D81FADCAF2005E991F /* YHModelOne.m in Sources */,
 				180D23A91FADC9F9005E991F /* main.m in Sources */,
+				180D23D91FADCAF2005E991F /* YHModelTwo.m in Sources */,
 				180D239B1FADC9F9005E991F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
