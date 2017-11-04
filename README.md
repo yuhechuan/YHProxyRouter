@@ -110,7 +110,7 @@ YHProxyRouter *proxyTool = [YHProxyRouter initWithTargets:[self getModels]];
  
   * `self.proxyRouter`和`initWithTargets:` 不能传入`nil`,否则会崩溃到断言`NSAssert`。
   
-  *入参时 ,方法名中的`:` ,如果在字符串最后可以省略,如果在中间不可省略。
+  * 入参时 ,方法名中的`:` ,如果在字符串最后可以省略,如果在中间不可省略。
 
 
  ## 鸣谢 Thanks
