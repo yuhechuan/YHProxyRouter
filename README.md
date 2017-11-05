@@ -7,7 +7,7 @@
 [![Laguage](https://img.shields.io/badge/language-ObjC%20%26%20Swift-orange.svg)](https://github.com/yuhechuan/YHProxyRouter)
 [![CocoaPods](https://img.shields.io/cocoapods/dt/YHProxyRouter.svg)](https://cocoapods.org/pods/YHProxyRouter)
 [![简书](https://img.shields.io/badge/blog-简书-brightgreen.svg)](http://www.jianshu.com/u/7c43d8cb3cff)
-[![GitHub stars](https://img.shields.io/github/stars/iTofu/YHProxyRouter.svg?style=social&label=Star)](https://github.com/iTofu/YHProxyRouter)
+[![GitHub stars](https://img.shields.io/github/stars/yuhechuan/YHProxyRouter.svg?style=social&label=Star)](https://github.com/yuhechuan/YHProxyRouter)
 
 ☀️一个用Object-C 写的实现多继承, 而且解耦功能强大的工具。
 
