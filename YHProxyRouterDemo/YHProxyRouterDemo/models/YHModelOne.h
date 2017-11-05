@@ -1,6 +1,6 @@
 //
 //  YHModelOne.h
-//  YHMultipleInheritance
+//  YHProxyRouterDemo
 //
 //  Created by apple on 2017/11/3.
 //  Copyright © 2017年 玉河川. All rights reserved.
