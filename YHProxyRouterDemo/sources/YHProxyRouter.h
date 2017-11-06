@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface YHProxyRouter : NSProxy
 
 /**
@@ -52,3 +54,5 @@
 - (id)executeMethod:(NSString *)methodName params:(NSArray<id> *)params;
 
 @end
+
+NS_ASSUME_NONNULL_END
