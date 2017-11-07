@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self secondWayFunction];
+    [self secondWayFunction];
     // 测试单例 模式
     [self setup];
     // Do any additional setup after loading the view, typically from a nib.
@@ -42,10 +42,11 @@
 }
 
 - (void)displayAnimation {
-    Class vc_class = NSClassFromString(@"YHBaseViewController");
-    UIViewController *vc = [[vc_class alloc]init];
-    UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
-    [self presentViewController:nc animated:YES completion:nil];
+    [self.proxyRouter unregisterAllTarget];
+//    Class vc_class = NSClassFromString(@"YHBaseViewController");
+//    UIViewController *vc = [[vc_class alloc]init];
+//    UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
+//    [self presentViewController:nc animated:YES completion:nil];
 }
 
 - (void)frisWayFunction {

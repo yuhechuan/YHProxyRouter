@@ -94,7 +94,10 @@ SINGLETON_FOR_CLASS(YHProxyRouter);
     Method *method_list = class_copyMethodList(target_class, &_count);
     NSMutableArray *methods = [NSMutableArray arrayWithCapacity:_count];
     for (int i = 0; i < _count; i ++) {
-        [methods addObject:(__bridge id _Nonnull)(method_list[i])];
+        SEL temp_sel = method_getName(method_list[i]);
+        const char *temp_method_name = sel_getName(temp_sel);
+        NSString *method_name = [NSString stringWithFormat:@"%s",temp_method_name];
+        [methods addObject:method_name];
     }
     free(method_list);
     return methods;
