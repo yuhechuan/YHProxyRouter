@@ -1,16 +1,19 @@
 //
 //  YHProxyRouter.h
-//  YHMultipleInheritance
+//  YHProxyRouterDemo
 //
 //  Created by apple on 2017/11/3.
 //  Copyright © 2017年 玉河川. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "YHProxySingleton.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YHProxyRouter : NSProxy
+
+SINGLETON_FOR_HEADER(YHProxyRouter);
 
 /**
  targets array: Class name of sting
@@ -28,13 +31,30 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)initWithTargets:(NSArray <NSString *>*)targets;
 
 /**
-  PerformSelector single selector without params
+ register single target with params
+ @param targetName targetName (NSString *)
+ */
+- (void)registerTargetName:(NSString *)targetName;
+
+/**
+ unregister single target  params
+ @param targetName targetName (NSString *)
+ */
+- (void)unregisterTargetName:(NSString *)targetName;
+
+/**
+ unregister all target without params
+ */
+- (void)unregisterAllTarget;
+
+/**
+  PerformSelector single selector with params
   @param methodName method name (NSString *)
  */
 - (id)executeMethod:(NSString *)methodName;
 
 /**
- PerformSelector multiple selectors without params
+ PerformSelector multiple selectors with params
  @param methodNames method name (NSArray <NSString *>*)
  */
 - (id)executeMethods:(NSArray *)methodNames;

@@ -1,6 +1,6 @@
 //
 //  NSObject+Router.h
-//  YHMultipleInheritance
+//  YHProxyRouterDemo
 //
 //  Created by apple on 2017/11/4.
 //  Copyright © 2017年 玉河川. All rights reserved.
@@ -21,5 +21,11 @@
  @return YHProxyRouter associated with this object, creating one if necessary
  */
 @property (nonatomic, strong) YHProxyRouter *proxyRouter;
+
+/**
+ @abstract Lazy-loaded YHProxyRouter for use with any object
+ @return YHProxyRouter associated with static object, creating one if necessary
+ */
+@property (nonatomic, strong) YHProxyRouter *defaultRouter;
 
 @end

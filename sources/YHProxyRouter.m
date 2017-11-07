@@ -1,6 +1,6 @@
 //
 //  YHProxyRouter.m
-//  YHMultipleInheritance
+//  YHProxyRouterDemo
 //
 //  Created by apple on 2017/11/3.
 //  Copyright © 2017年 玉河川. All rights reserved.
@@ -14,8 +14,9 @@
     pthread_mutex_t _mutex;
 }
 
+SINGLETON_FOR_CLASS(YHProxyRouter);
+
 + (instancetype)initWithTargets:(NSArray <NSString *>*)targets {
-    
     return [[YHProxyRouter alloc]initWithTargets:targets];
 }
 
@@ -30,6 +31,18 @@
     [self _registerMethodsWithTargets:targets];
 }
 
+- (void)registerTargetName:(NSString *)targetName {
+    [self _registerMethodsWithTargetName:targetName];
+}
+
+- (void)unregisterTargetName:(NSString *)targetName {
+    [self _unregisterMethodsWithTargetName:targetName];
+}
+
+- (void)unregisterAllTarget {
+    [self _unregisterAllTarget];
+}
+
 - (void)_initializeVariable {
     _classInfosMap = [NSMutableDictionary dictionary];
     pthread_mutex_init(&_mutex, NULL);
@@ -37,22 +50,54 @@
 
 - (void)_registerMethodsWithTargets:(NSArray <NSString *>*)targets {
      _targets = targets;
+    [self _unregisterAllTarget];
+    for (NSString *target_name in targets) {
+        [self _registerMethodsWithTargetName:target_name];
+    }
+}
+
+- (void)_registerMethodsWithTargetName:(NSString *)target_name {
+    Class target_class = NSClassFromString(target_name);
+    id target = [[target_class alloc]init];
+    unsigned int numberOfMethods = 0;
+    Method *method_list = class_copyMethodList(target_class, &numberOfMethods);
+    for (int i = 0; i < numberOfMethods; i ++) {
+        [self _registerMethod:method_list[i] target:target];
+    }
+    free(method_list);
+}
+
+- (void)_registerMethod:(Method)temp_method target:(id)target {
+    SEL temp_sel = method_getName(temp_method);
+    const char *temp_method_name = sel_getName(temp_sel);
+    
+    pthread_mutex_lock(&_mutex);
+    [_classInfosMap setObject:target forKey:[NSString stringWithUTF8String:temp_method_name]];
+    pthread_mutex_unlock(&_mutex);
+}
+
+- (void)_unregisterMethodsWithTargetName:(NSString *)target_name {
+    pthread_mutex_lock(&_mutex);
+    [_classInfosMap removeObjectsForKeys:[self _method_list:target_name]];
+    pthread_mutex_unlock(&_mutex);
+}
+
+- (void)_unregisterAllTarget {
     pthread_mutex_lock(&_mutex);
     [_classInfosMap removeAllObjects];
-    for (NSString *target_name in targets) {
-        Class target_class = NSClassFromString(target_name);
-        id target = [[target_class alloc]init];
-        unsigned int numberOfMethods = 0;
-        Method *method_list = class_copyMethodList(target_class, &numberOfMethods);
-        for (int i = 0; i < numberOfMethods; i ++) {
-            Method temp_method = method_list[i];
-            SEL temp_sel = method_getName(temp_method);
-            const char *temp_method_name = sel_getName(temp_sel);
-            [_classInfosMap setObject:target forKey:[NSString stringWithUTF8String:temp_method_name]];
-        }
-        free(method_list);
-    }
     pthread_mutex_unlock(&_mutex);
+}
+
+- (NSArray <NSString *>*)_method_list:(NSString *)target_name {
+    Class target_class = NSClassFromString(target_name);
+    unsigned int _count = 0;
+    Method *method_list = class_copyMethodList(target_class, &_count);
+    NSMutableArray *methods = [NSMutableArray arrayWithCapacity:_count];
+    for (int i = 0; i < _count; i ++) {
+        [methods addObject:(__bridge id _Nonnull)(method_list[i])];
+    }
+    free(method_list);
+    return methods;
 }
 
 

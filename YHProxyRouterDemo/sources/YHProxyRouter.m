@@ -31,6 +31,18 @@ SINGLETON_FOR_CLASS(YHProxyRouter);
     [self _registerMethodsWithTargets:targets];
 }
 
+- (void)registerTargetName:(NSString *)targetName {
+    [self _registerMethodsWithTargetName:targetName];
+}
+
+- (void)unregisterTargetName:(NSString *)targetName {
+    [self _unregisterMethodsWithTargetName:targetName];
+}
+
+- (void)unregisterAllTarget {
+    [self _unregisterAllTarget];
+}
+
 - (void)_initializeVariable {
     _classInfosMap = [NSMutableDictionary dictionary];
     pthread_mutex_init(&_mutex, NULL);
@@ -38,10 +50,7 @@ SINGLETON_FOR_CLASS(YHProxyRouter);
 
 - (void)_registerMethodsWithTargets:(NSArray <NSString *>*)targets {
      _targets = targets;
-    pthread_mutex_lock(&_mutex);
-    [_classInfosMap removeAllObjects];
-    pthread_mutex_unlock(&_mutex);
-    
+    [self _unregisterAllTarget];
     for (NSString *target_name in targets) {
         [self _registerMethodsWithTargetName:target_name];
     }
@@ -52,7 +61,6 @@ SINGLETON_FOR_CLASS(YHProxyRouter);
     id target = [[target_class alloc]init];
     unsigned int numberOfMethods = 0;
     Method *method_list = class_copyMethodList(target_class, &numberOfMethods);
-
     for (int i = 0; i < numberOfMethods; i ++) {
         [self _registerMethod:method_list[i] target:target];
     }
@@ -66,6 +74,30 @@ SINGLETON_FOR_CLASS(YHProxyRouter);
     pthread_mutex_lock(&_mutex);
     [_classInfosMap setObject:target forKey:[NSString stringWithUTF8String:temp_method_name]];
     pthread_mutex_unlock(&_mutex);
+}
+
+- (void)_unregisterMethodsWithTargetName:(NSString *)target_name {
+    pthread_mutex_lock(&_mutex);
+    [_classInfosMap removeObjectsForKeys:[self _method_list:target_name]];
+    pthread_mutex_unlock(&_mutex);
+}
+
+- (void)_unregisterAllTarget {
+    pthread_mutex_lock(&_mutex);
+    [_classInfosMap removeAllObjects];
+    pthread_mutex_unlock(&_mutex);
+}
+
+- (NSArray <NSString *>*)_method_list:(NSString *)target_name {
+    Class target_class = NSClassFromString(target_name);
+    unsigned int _count = 0;
+    Method *method_list = class_copyMethodList(target_class, &_count);
+    NSMutableArray *methods = [NSMutableArray arrayWithCapacity:_count];
+    for (int i = 0; i < _count; i ++) {
+        [methods addObject:(__bridge id _Nonnull)(method_list[i])];
+    }
+    free(method_list);
+    return methods;
 }
 
 
