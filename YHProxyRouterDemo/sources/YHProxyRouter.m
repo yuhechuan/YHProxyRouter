@@ -14,8 +14,9 @@
     pthread_mutex_t _mutex;
 }
 
+SINGLETON_FOR_CLASS(YHProxyRouter);
+
 + (instancetype)initWithTargets:(NSArray <NSString *>*)targets {
-    
     return [[YHProxyRouter alloc]initWithTargets:targets];
 }
 

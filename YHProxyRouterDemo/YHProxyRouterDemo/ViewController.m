@@ -8,8 +8,11 @@
 
 #import "ViewController.h"
 #import "YHProxy.h"
+#import "YHButton.h"
 
 @interface ViewController ()
+
+@property (nonatomic, strong) YHButton *display;
 
 @end
 
@@ -17,8 +20,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self frisWayFunction];
+    //[self secondWayFunction];
+    // 测试单例 模式
+    [self setup];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)setup {
+    CGFloat width = 200;
+    CGFloat height = 50;
+    CGFloat x = (self.view.bounds.size.width - width) / 2.0;
+    CGFloat y1 = 200;
+    _display = [[YHButton alloc]initWithFrame:CGRectMake(x, y1, width, height)];
+    _display.title = @"下一页";
+    _display.buttonColor = [UIColor colorWithRed:70 / 225.0 green:187 / 255.0 blue:38 / 255.0 alpha:1];
+    typeof(self) __weak weakSelf = self;
+    _display.operation = ^{
+        [weakSelf displayAnimation];
+    };
+    [self.view addSubview:_display];
+}
+
+- (void)displayAnimation {
+    Class vc_class = NSClassFromString(@"YHBaseViewController");
+    UIViewController *vc = [[vc_class alloc]init];
+    UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:vc];
+    [self presentViewController:nc animated:YES completion:nil];
 }
 
 - (void)frisWayFunction {

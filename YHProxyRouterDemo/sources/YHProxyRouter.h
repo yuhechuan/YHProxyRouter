@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YHProxySingleton.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YHProxyRouter : NSProxy
+
+SINGLETON_FOR_HEADER(YHProxyRouter);
 
 /**
  targets array: Class name of sting

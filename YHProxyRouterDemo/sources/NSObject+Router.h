@@ -22,4 +22,10 @@
  */
 @property (nonatomic, strong) YHProxyRouter *proxyRouter;
 
+/**
+ @abstract Lazy-loaded YHProxyRouter for use with any object
+ @return YHProxyRouter associated with static object, creating one if necessary
+ */
+@property (nonatomic, strong) YHProxyRouter *defaultRouter;
+
 @end

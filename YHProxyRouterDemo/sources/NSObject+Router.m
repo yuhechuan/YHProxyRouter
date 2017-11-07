@@ -24,4 +24,17 @@
      objc_setAssociatedObject(self,_cmd, proxyRouter, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+- (YHProxyRouter *)defaultRouter {
+    id router = objc_getAssociatedObject(self, @selector(setDefaultRouter:));
+    if (!router) {
+        router = DEFAULT_ROUTER;
+        self.proxyRouter = router;
+    }
+    return router;
+}
+
+- (void)setDefaultRouter:(YHProxyRouter *)defaultRouter {
+    objc_setAssociatedObject(self,_cmd, defaultRouter, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 @end

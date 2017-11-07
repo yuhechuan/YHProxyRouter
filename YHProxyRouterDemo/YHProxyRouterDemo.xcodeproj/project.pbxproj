@@ -19,6 +19,8 @@
 		180D23D21FADCAB5005E991F /* YHProxyRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D23D01FADCAB5005E991F /* YHProxyRouter.m */; };
 		180D23D81FADCAF2005E991F /* YHModelOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D23D51FADCAF2005E991F /* YHModelOne.m */; };
 		180D23D91FADCAF2005E991F /* YHModelTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D23D71FADCAF2005E991F /* YHModelTwo.m */; };
+		18A0F46C1FB13FBB0009C844 /* YHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A0F46B1FB13FBB0009C844 /* YHButton.m */; };
+		18A0F46F1FB140FE0009C844 /* YHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A0F46E1FB140FE0009C844 /* YHBaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,11 @@
 		180D23D51FADCAF2005E991F /* YHModelOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHModelOne.m; sourceTree = "<group>"; };
 		180D23D61FADCAF2005E991F /* YHModelTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHModelTwo.h; sourceTree = "<group>"; };
 		180D23D71FADCAF2005E991F /* YHModelTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHModelTwo.m; sourceTree = "<group>"; };
+		18A0F4681FB074FB0009C844 /* YHProxySingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YHProxySingleton.h; sourceTree = "<group>"; };
+		18A0F46A1FB13FBB0009C844 /* YHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHButton.h; sourceTree = "<group>"; };
+		18A0F46B1FB13FBB0009C844 /* YHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHButton.m; sourceTree = "<group>"; };
+		18A0F46D1FB140FE0009C844 /* YHBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YHBaseViewController.h; sourceTree = "<group>"; };
+		18A0F46E1FB140FE0009C844 /* YHBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YHBaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +122,12 @@
 		180D23981FADC9F9005E991F /* YHProxyRouterDemo */ = {
 			isa = PBXGroup;
 			children = (
+				18A0F4691FB13FBB0009C844 /* button */,
 				180D23D31FADCAF2005E991F /* models */,
 				180D23991FADC9F9005E991F /* AppDelegate.h */,
 				180D239A1FADC9F9005E991F /* AppDelegate.m */,
+				18A0F46D1FB140FE0009C844 /* YHBaseViewController.h */,
+				18A0F46E1FB140FE0009C844 /* YHBaseViewController.m */,
 				180D239C1FADC9F9005E991F /* ViewController.h */,
 				180D239D1FADC9F9005E991F /* ViewController.m */,
 				180D239F1FADC9F9005E991F /* Main.storyboard */,
@@ -150,11 +160,12 @@
 		180D23CB1FADCAB5005E991F /* sources */ = {
 			isa = PBXGroup;
 			children = (
+				180D23CE1FADCAB5005E991F /* YHProxy.h */,
 				180D23CC1FADCAB5005E991F /* NSObject+Router.h */,
 				180D23CD1FADCAB5005E991F /* NSObject+Router.m */,
-				180D23CE1FADCAB5005E991F /* YHProxy.h */,
 				180D23CF1FADCAB5005E991F /* YHProxyRouter.h */,
 				180D23D01FADCAB5005E991F /* YHProxyRouter.m */,
+				18A0F4681FB074FB0009C844 /* YHProxySingleton.h */,
 			);
 			path = sources;
 			sourceTree = "<group>";
@@ -168,6 +179,15 @@
 				180D23D71FADCAF2005E991F /* YHModelTwo.m */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		18A0F4691FB13FBB0009C844 /* button */ = {
+			isa = PBXGroup;
+			children = (
+				18A0F46A1FB13FBB0009C844 /* YHButton.h */,
+				18A0F46B1FB13FBB0009C844 /* YHButton.m */,
+			);
+			path = button;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,9 +326,11 @@
 				180D23D11FADCAB5005E991F /* NSObject+Router.m in Sources */,
 				180D23D21FADCAB5005E991F /* YHProxyRouter.m in Sources */,
 				180D239E1FADC9F9005E991F /* ViewController.m in Sources */,
+				18A0F46C1FB13FBB0009C844 /* YHButton.m in Sources */,
 				180D23D81FADCAF2005E991F /* YHModelOne.m in Sources */,
 				180D23A91FADC9F9005E991F /* main.m in Sources */,
 				180D23D91FADCAF2005E991F /* YHModelTwo.m in Sources */,
+				18A0F46F1FB140FE0009C844 /* YHBaseViewController.m in Sources */,
 				180D239B1FADC9F9005E991F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
