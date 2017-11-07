@@ -99,11 +99,58 @@ YHProxyRouter *proxyTool = [YHProxyRouter initWithTargets:[self getModels]];
  [self.proxyRouter executeMethod:@"modelTwoParam:bigName:" params:@[@"练峨眉",@"一页书"]];
  //注:单个参数 方法名可以省略 :  多个参数方法名不可省略中间的:
  ```
+ 3. 直接调用 `DEFAULT_ROUTER`(单例)生成对象.
+ ```
+ DEFAULT_ROUTER:[YHProxyRouter defaultRouter]
+ DEFAULT_ROUTER.targets = [self getModels];
+ //1.无参数 方法
+ [DEFAULT_ROUTER executeMethod:@"modelOneFunction"];
+ //2.无参数多个方法
+ [DEFAULT_ROUTER executeMethods:[self getMethods]];
+ //3.一个参数
+ [DEFAULT_ROUTER executeMethod:@"oneParamWith:" param:@"南风不竞"];
+ //4.多个参数
+ [DEFAULT_ROUTER executeMethod:@"modelTwoParam:bigName:" params:@[@"练峨眉",@"一页书"]];
+ //注:单个参数 方法名可以省略 :  多个参数方法名不可省略中间的:
+ ```
+ 4. 直接调用 `self.defaultRouter`(单例)生成对象.
+ ```
+ self.defaultRouter.targets = [self getModels];
+ //1.无参数 方法
+ [self.defaultRouter executeMethod:@"modelOneFunction"];
+ //2.无参数多个方法
+ [self.defaultRouter executeMethods:[self getMethods]];
+ //3.一个参数
+ [self.defaultRouter executeMethod:@"oneParamWith:" param:@"南风不竞"];
+ //4.多个参数
+ [self.defaultRouter executeMethod:@"modelTwoParam:bigName:" params:@[@"练峨眉",@"一页书"]];
+ //注:单个参数 方法名可以省略 :  多个参数方法名不可省略中间的:
+ ```
  
  ## 版本 ChangeLog
  
  ### [V 1.0.0](https://github.com/yuhechuan/YHProxyRouter/releases/tag/1.0.0) (2017.11.04)
  * 首次提交!
+ ### [V 1.0.1](https://github.com/yuhechuan/YHProxyRouter/releases/tag/1.0.0) (2017.11.07)
+ * 增加单例模式, 增加取消类的注册接口.
+ ```
+ /**
+ register single target with params
+ @param targetName targetName (NSString *)
+ */
+ - (void)registerTargetName:(NSString *)targetName;
+ 
+ /**
+ unregister single target  params
+ @param targetName targetName (NSString *)
+ */
+ - (void)unregisterTargetName:(NSString *)targetName;
+ 
+ /**
+ unregister all target without params
+ */
+ - (void)unregisterAllTarget;
+ ```
  
  ## 提示 Tips
  
