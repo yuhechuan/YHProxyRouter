@@ -40,19 +40,31 @@ SINGLETON_FOR_CLASS(YHProxyRouter);
      _targets = targets;
     pthread_mutex_lock(&_mutex);
     [_classInfosMap removeAllObjects];
+    pthread_mutex_unlock(&_mutex);
+    
     for (NSString *target_name in targets) {
-        Class target_class = NSClassFromString(target_name);
-        id target = [[target_class alloc]init];
-        unsigned int numberOfMethods = 0;
-        Method *method_list = class_copyMethodList(target_class, &numberOfMethods);
-        for (int i = 0; i < numberOfMethods; i ++) {
-            Method temp_method = method_list[i];
-            SEL temp_sel = method_getName(temp_method);
-            const char *temp_method_name = sel_getName(temp_sel);
-            [_classInfosMap setObject:target forKey:[NSString stringWithUTF8String:temp_method_name]];
-        }
-        free(method_list);
+        [self _registerMethodsWithTargetName:target_name];
     }
+}
+
+- (void)_registerMethodsWithTargetName:(NSString *)target_name {
+    Class target_class = NSClassFromString(target_name);
+    id target = [[target_class alloc]init];
+    unsigned int numberOfMethods = 0;
+    Method *method_list = class_copyMethodList(target_class, &numberOfMethods);
+
+    for (int i = 0; i < numberOfMethods; i ++) {
+        [self _registerMethod:method_list[i] target:target];
+    }
+    free(method_list);
+}
+
+- (void)_registerMethod:(Method)temp_method target:(id)target {
+    SEL temp_sel = method_getName(temp_method);
+    const char *temp_method_name = sel_getName(temp_sel);
+    
+    pthread_mutex_lock(&_mutex);
+    [_classInfosMap setObject:target forKey:[NSString stringWithUTF8String:temp_method_name]];
     pthread_mutex_unlock(&_mutex);
 }
 
