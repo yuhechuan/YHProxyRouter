@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YHProxyRouter"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "A tool to realize multiple inheritance! Support: http://www.jianshu.com/u/7c43d8cb3cff"
   s.homepage     = "https://github.com/yuhechuan/YHProxyRouter"
   s.license      = "MIT"
