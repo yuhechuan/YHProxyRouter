@@ -27,6 +27,7 @@
 }
 
 - (void)setup {
+    
     CGFloat width = 200;
     CGFloat height = 50;
     CGFloat x = (self.view.bounds.size.width - width) / 2.0;

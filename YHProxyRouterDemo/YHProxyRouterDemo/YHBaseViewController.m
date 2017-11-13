@@ -43,6 +43,7 @@
     [DEFAULT_ROUTER executeMethod:@"oneParamWith:" param:@"南风不竞"];
     //4.多个参数
     [DEFAULT_ROUTER executeMethod:@"modelTwoParam:bigName:" params:@[@"练峨眉",@"一页书"]];
+    
 }
 
 - (void)fourWayFunction {
