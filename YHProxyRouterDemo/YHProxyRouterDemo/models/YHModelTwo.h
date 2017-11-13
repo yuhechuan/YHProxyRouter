@@ -10,6 +10,5 @@
 
 @interface YHModelTwo : NSObject
 
-- (void)modelTwoFunction;
 
 @end
