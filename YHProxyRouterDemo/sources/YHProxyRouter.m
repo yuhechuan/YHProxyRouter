@@ -17,18 +17,49 @@
 SINGLETON_FOR_CLASS(YHProxyRouter);
 
 + (instancetype)initWithTargets:(NSArray <NSString *>*)targets {
-    return [[YHProxyRouter alloc]initWithTargets:targets];
+    return [[YHProxyRouter alloc]_initWithTargets:targets];
 }
 
-- (instancetype)initWithTargets:(NSArray <NSString *>*)targets {
+- (instancetype)_initWithTargets:(NSArray <NSString *>*)targets {
     [self _initializeVariable];
     [self _registerMethodsWithTargets:targets];
+    return self;
+}
+
++ (instancetype)initWithTargetPath:(NSString *)targetPath {
+    return [[YHProxyRouter alloc]_initWithTargetPath:targetPath];
+}
+
+- (instancetype)_initWithTargetPath:(NSString *)targetPath {
+    [self _initializeVariable];
+    [self _registerMethodsWithTargets:[self _targetsFromTargetPath:targetPath]];
     return self;
 }
 
 - (void)setTargets:(NSArray *)targets {
     [self _initializeVariable];
     [self _registerMethodsWithTargets:targets];
+}
+
+- (void)setTargetPath:(NSString *)targetPath {
+    _targetPath = targetPath;
+    [self _initializeVariable];
+    [self _registerMethodsWithTargets:[self _targetsFromTargetPath:targetPath]];
+}
+
+- (NSArray <NSString *>*)_targetsFromTargetPath:(NSString *)targetPath {
+    NSArray *_type = [targetPath componentsSeparatedByString:@"."];    
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:[_type firstObject] ofType:[_type lastObject]];
+    NSBundle *methodBundle = [NSBundle bundleWithPath:bundlePath];
+    NSError *error;
+    NSArray *methodFiles = [methodBundle pathsForResourcesOfType:@"txt" inDirectory:nil];
+    NSMutableArray *target_names = [NSMutableArray array];
+    for (NSString *methodPath in methodFiles) {
+        NSString *content = [NSString stringWithContentsOfFile:methodPath encoding:NSUTF8StringEncoding error:&error];
+        [target_names addObjectsFromArray:[content componentsSeparatedByString:@"\n"]];
+    }
+    [target_names removeObject:@""];
+    return target_names;
 }
 
 - (void)registerTargetName:(NSString *)targetName {

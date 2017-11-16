@@ -22,6 +22,11 @@ SINGLETON_FOR_HEADER(YHProxyRouter);
 @property (nonatomic, strong,readwrite) NSArray *targets;
 
 /**
+ targetPath:bundle path of .txt file
+ */
+@property (nonatomic, copy,readwrite) NSString *targetPath;
+
+/**
  Creates and returns a YHProxyRouter object with targets.
  
  @param targets Class name of sting.
@@ -29,6 +34,15 @@ SINGLETON_FOR_HEADER(YHProxyRouter);
  @return A new YHProxyRouter .
  */
 + (instancetype)initWithTargets:(NSArray <NSString *>*)targets;
+
+/**
+ Creates and returns a YHProxyRouter object with targets.
+ 
+ @param targetPath bundle path of .txt file.
+ 
+ @return A new YHProxyRouter .
+ */
++ (instancetype)initWithTargetPath:(NSString *)targetPath;
 
 /**
  register single target with params

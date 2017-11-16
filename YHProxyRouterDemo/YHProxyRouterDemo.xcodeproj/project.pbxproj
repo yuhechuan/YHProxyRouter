@@ -22,6 +22,7 @@
 		18A0F46C1FB13FBB0009C844 /* YHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A0F46B1FB13FBB0009C844 /* YHButton.m */; };
 		18A0F46F1FB140FE0009C844 /* YHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A0F46E1FB140FE0009C844 /* YHBaseViewController.m */; };
 		18CF5B911FBC481800A41750 /* main_proxy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18CF5B901FBC481800A41750 /* main_proxy.bundle */; };
+		18CF5B941FBD7FDD00A41750 /* YHTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF5B931FBD7FDD00A41750 /* YHTools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,8 @@
 		18A0F46D1FB140FE0009C844 /* YHBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YHBaseViewController.h; sourceTree = "<group>"; };
 		18A0F46E1FB140FE0009C844 /* YHBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YHBaseViewController.m; sourceTree = "<group>"; };
 		18CF5B901FBC481800A41750 /* main_proxy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = main_proxy.bundle; sourceTree = "<group>"; };
+		18CF5B921FBD7FDD00A41750 /* YHTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YHTools.h; sourceTree = "<group>"; };
+		18CF5B931FBD7FDD00A41750 /* YHTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YHTools.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +183,8 @@
 				180D23D51FADCAF2005E991F /* YHModelOne.m */,
 				180D23D61FADCAF2005E991F /* YHModelTwo.h */,
 				180D23D71FADCAF2005E991F /* YHModelTwo.m */,
+				18CF5B921FBD7FDD00A41750 /* YHTools.h */,
+				18CF5B931FBD7FDD00A41750 /* YHTools.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				180D23D21FADCAB5005E991F /* YHProxyRouter.m in Sources */,
 				180D239E1FADC9F9005E991F /* ViewController.m in Sources */,
 				18A0F46C1FB13FBB0009C844 /* YHButton.m in Sources */,
+				18CF5B941FBD7FDD00A41750 /* YHTools.m in Sources */,
 				180D23D81FADCAF2005E991F /* YHModelOne.m in Sources */,
 				180D23A91FADC9F9005E991F /* main.m in Sources */,
 				180D23D91FADCAF2005E991F /* YHModelTwo.m in Sources */,

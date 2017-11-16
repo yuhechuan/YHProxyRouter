@@ -9,6 +9,9 @@
 #import "ViewController.h"
 #import "YHProxy.h"
 #import "YHButton.h"
+#import "YHTools.h"
+
+static const NSString *tagetPath = @"main_proxy.bundle";
 
 @interface ViewController ()
 
@@ -20,10 +23,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    Class class = NSClassFromString(@"YHTools");
+//    [class performSelector:@selector(calculateHeight)];
     [self secondWayFunction];
     // 测试单例 模式
-    [self setup];
+    //[self setup];
     // Do any additional setup after loading the view, typically from a nib.
+    self.proxyRouter.targets = @[@"YHTools"];
 }
 
 - (void)setup {
@@ -67,7 +73,7 @@
 }
 
 - (void)secondWayFunction {
-    self.proxyRouter.targets = [self getModels];
+    self.proxyRouter.targetPath = tagetPath;
     //1.无参数 方法
     [self.proxyRouter executeMethod:@"modelOneFunction"];
     //2.无参数多个方法
